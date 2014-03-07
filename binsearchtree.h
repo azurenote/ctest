@@ -9,11 +9,16 @@ enseed_begin
 
 struct BinSearchTree : BinTree<int>
 {
+<<<<<<< HEAD
 	typedef BinTreeNode<int> NodeType;
 	typedef BinTree<int>::NodePointer NodePointer;
 
 
 
+=======
+	typedef BinTree<int>::NodePointer NodePointer;
+
+>>>>>>> f64162395304e7c3c8074c9b3b277a62fc7b1aee
 	NodePointer search(int key)
 	{
 		NodePointer result = root;
@@ -33,6 +38,7 @@ struct BinSearchTree : BinTree<int>
 		return result;
 	}
 
+<<<<<<< HEAD
 	NodePointer insert(int value)
 	{
 		NodePointer node = root;
@@ -48,6 +54,19 @@ struct BinSearchTree : BinTree<int>
 		while (node != nullptr)
 		{
 			if (newnode->data < node->data)
+=======
+	NodePointer insert(NodePointer element)
+	{
+		NodePointer node = root;
+		
+
+		while (node != nullptr)
+		{
+			if (element->data == node->data)
+				return node;
+
+			else if (element->data < node->data)
+>>>>>>> f64162395304e7c3c8074c9b3b277a62fc7b1aee
 			{
 				if (node->left == nullptr)
 					break;
@@ -63,13 +82,25 @@ struct BinSearchTree : BinTree<int>
 			}
 		}
 
+<<<<<<< HEAD
 
 		if (newnode->data < node->data)
+=======
+		NodePointer newnode = new BinTreeNode<int>(element->data);
+
+		if (node == nullptr)
+			root = newnode;
+
+		else if (newnode->data < node->data)
+>>>>>>> f64162395304e7c3c8074c9b3b277a62fc7b1aee
 			node->left = newnode;
 		else
 			node->right = newnode;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> f64162395304e7c3c8074c9b3b277a62fc7b1aee
 		return newnode;
 	}
 
