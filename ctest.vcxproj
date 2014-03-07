@@ -11,13 +11,22 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="exer9.cpp" />
     <ClCompile Include="exercise6_1.c" />
     <ClCompile Include="exercise7.c" />
+    <ClCompile Include="exercise7_3.cpp" />
     <ClCompile Include="exercise8.c" />
+    <ClCompile Include="exercise9.c" />
+    <ClCompile Include="exercise7_2.cpp" />
+    <ClCompile Include="misc.c" />
+    <ClCompile Include="smart.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="avltree.h" />
+    <ClInclude Include="binsearchtree.h" />
+    <ClInclude Include="bintree.h" />
     <ClInclude Include="compile.h" />
+    <ClInclude Include="heap.h" />
+    <ClInclude Include="rbtree.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{9AF75F5E-9D38-4A7C-811C-7EEF034ADC77}</ProjectGuid>

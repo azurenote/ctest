@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="bintree">
+      <UniqueIdentifier>{cc043205-73c1-427c-af84-8aebd6f61b5e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="exercise6_1.c">
@@ -24,13 +27,40 @@
     <ClCompile Include="exercise8.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="exer9.cpp">
+    <ClCompile Include="exercise9.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="exercise7_2.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="exercise7_3.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="misc.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="smart.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="compile.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="bintree.h">
+      <Filter>bintree</Filter>
+    </ClInclude>
+    <ClInclude Include="heap.h">
+      <Filter>bintree</Filter>
+    </ClInclude>
+    <ClInclude Include="binsearchtree.h">
+      <Filter>bintree</Filter>
+    </ClInclude>
+    <ClInclude Include="avltree.h">
+      <Filter>bintree</Filter>
+    </ClInclude>
+    <ClInclude Include="rbtree.h">
+      <Filter>bintree</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
