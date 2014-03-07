@@ -1,4 +1,4 @@
-
+#if 0
 #include <iostream>
 
 #include "binsearchtree.h"
@@ -27,3 +27,4 @@ int main()
 	if (res)
 		cout << res->data << endl;
 }
+#endif
