@@ -106,12 +106,9 @@ struct BinTree
 //		preorder(root, func);
 		std::stack<NodePointer> stack;
 
-<<<<<<< HEAD
 		if (root == nullptr)
 			return;
 
-=======
->>>>>>> f64162395304e7c3c8074c9b3b277a62fc7b1aee
 		stack.push(root);
 
 		while (stack.empty() == false)

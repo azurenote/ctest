@@ -4,7 +4,6 @@
 
 enseed_begin
 
-<<<<<<< HEAD
 struct Heap
 {
 	typedef int (*Comparer)(int,int);
@@ -12,20 +11,12 @@ struct Heap
 		: size(0)
 	{
 		memset(data, 0, sizeof(int)* 100);
-=======
-template <typename T>
-struct Heap : public BinTree<T>
-{
-	Heap()
-	{
->>>>>>> f64162395304e7c3c8074c9b3b277a62fc7b1aee
 	}
 
 	~Heap()
 	{
 	}
 
-<<<<<<< HEAD
 	void insert(int value)
 	{
 		data[size] = value;
@@ -62,15 +53,6 @@ struct Heap : public BinTree<T>
 	int data[100];
 	int size;
 	Comparer compare;
-=======
-	void insert()
-	{
-	}
-
-	void remove()
-	{
-	}
->>>>>>> f64162395304e7c3c8074c9b3b277a62fc7b1aee
 };
 
 enseed_end
