@@ -45,6 +45,9 @@
     <ClCompile Include="ec_heap.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="ec_graph.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="compile.h">

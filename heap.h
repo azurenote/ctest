@@ -17,19 +17,17 @@ struct Heap
 	{
 	}
 
-	void insert(int value)
+	void insert(int element)
 	{
-		data[size] = value;
-
-		int ipos = size;
-		int ppos = posParent(ipos);
-
-		while (0 < ipos && compare(data[ppos], data[ipos]) < 0)
+		int i;
+		i = ++size;
+ 
+		while( (i!=1) && (element > data[i/2]) )
 		{
-			std::swap(data[ipos], data[ppos]);
-			ipos = ppos;
-			ppos = posParent(ipos);
+			data[i] = data[i/2];
+			i/=2;
 		}
+		data[i]=element;
 
 		++size;
 	}
@@ -39,9 +37,30 @@ struct Heap
 		if (size < 1)
 			throw std::exception("no item");
 
-		int ret = data[0]; //top
+		int parent = 1, child = 2;
+		int element, temp;
+         
+		element = data[1];
+		temp = data[size--];
+ 
+		while( child <= size )
+		{
+			if( data[child] < data[child+1] )
+				child++;
+ 
+			if( temp >= data[child] ) break;
 
+			data[parent]=data[child];
+ 
+			parent=child;
+			child*=2;
+		}
+
+		data[parent] = temp;
+		return element;
 	}
+
+	bool any() {return 0 < size;}
 
 	int posParent(int pos)
 	{

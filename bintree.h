@@ -93,7 +93,8 @@ struct BinTree
 			
 			stack.pop();
 
-			func(node);
+			if (func(node) == false)
+				break;
 
 			node = node->right;
 		}
@@ -148,7 +149,8 @@ struct BinTree
 				stack.push(node->right);
 			else
 			{
-				func(node);
+				if (func(node) == false)
+					break;
 				node->visited = true;
 
 				list.push_back(node);
@@ -175,7 +177,8 @@ struct BinTree
 
 			queue.pop();
 
-			func(node);
+			if (func(node) == false)
+				break;
 
 			if (node->left != nullptr)
 				queue.push(node->left);

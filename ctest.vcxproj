@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ec_graph.cpp" />
     <ClCompile Include="ec_heap.cpp" />
     <ClCompile Include="exercise6_1.c" />
     <ClCompile Include="exercise7.c" />
