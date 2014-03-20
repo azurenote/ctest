@@ -48,6 +48,9 @@
     <ClCompile Include="ec_graph.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="graph.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="compile.h">
@@ -66,6 +69,9 @@
       <Filter>bintree</Filter>
     </ClInclude>
     <ClInclude Include="rbtree.h">
+      <Filter>bintree</Filter>
+    </ClInclude>
+    <ClInclude Include="graph.h">
       <Filter>bintree</Filter>
     </ClInclude>
   </ItemGroup>

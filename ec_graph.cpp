@@ -1,159 +1,76 @@
 #include <iostream>
 
-#include <queue>
-#include <stack>
-#include <list>
-#include <vector>
-#include <set>
+#include "graph.h"
 
-class Graph
-{
-public:
-	struct Node
-	{
-		Node(int v) : value(v){}
-		int value;
-		std::list<Node*> adj;
-	};
-};
-
-void traverseDFS(Graph::Node* root);
-void traverseBFS(Graph::Node* root);
 
 int main()
 {
-	Graph::Node n1(1),n2(2),n3(3),n4(4)
-		,n5(5),n6(6),n7(7),n8(8);
+	using namespace enseed;
 
-	n1.adj.push_back(&n2);
-	n1.adj.push_back(&n3);
-	n1.adj.push_back(&n4);
+	Graph g;
+	Graph::Node  &n1 = g.add(1)
+				,&n2 = g.add(2)
+				,&n3 = g.add(3)
+				,&n4 = g.add(4)
+				,&n5 = g.add(5)
+				,&n6 = g.add(6)
+				,&n7 = g.add(7)
+				,&n8 = g.add(8)
+				;
 
-	n2.adj.push_back(&n1);
-	n2.adj.push_back(&n3);
+	n1.linkWith(&n2);
+	n1.linkWith(&n3);
+	n1.linkWith(&n4);
 
-	n3.adj.push_back(&n1);
-	n3.adj.push_back(&n2);
-	n3.adj.push_back(&n4);
-	n3.adj.push_back(&n5);
+	n2.linkWith(&n1);
+	n2.linkWith(&n3);
 
-	n4.adj.push_back(&n1);
-	n4.adj.push_back(&n3);
-	n4.adj.push_back(&n6);
-	n4.adj.push_back(&n7);
+	n3.linkWith(&n1);
+	n3.linkWith(&n2);
+	n3.linkWith(&n4);
+	n3.linkWith(&n5);
 
-	n5.adj.push_back(&n3);
+	n4.linkWith(&n1);
+	n4.linkWith(&n3);
+	n4.linkWith(&n6);
+	n4.linkWith(&n7);
 
-	n6.adj.push_back(&n4);
-	n6.adj.push_back(&n7);
-	n6.adj.push_back(&n8);
+	n5.linkWith(&n3);
 
-	n7.adj.push_back(&n4);
-	n7.adj.push_back(&n6);
+	n6.linkWith(&n4);
+	n6.linkWith(&n7);
+	n6.linkWith(&n8);
 
-	n8.adj.push_back(&n6);
+	n7.linkWith(&n4);
+	n7.linkWith(&n6);
 
-	puts("\nDFS");
-	traverseDFS(&n1);
-	puts("\nBFS");
-	traverseBFS(&n1);
-}
+	n8.linkWith(&n6);
 
+	std::vector<Graph::Node*> nodes;
 
-using namespace std;
+	nodes.push_back(&n1);
+	nodes.push_back(&n2);
+	nodes.push_back(&n3);
+	nodes.push_back(&n4);
+	nodes.push_back(&n5);
+	nodes.push_back(&n6);
+	nodes.push_back(&n7);
+	nodes.push_back(&n8);
 
-
-typedef vector<Graph::Node*> Path;
-
-bool contain(Path&, Graph::Node*); 
-
-void print(list<Path>& list);
-
-void traverseDFS(Graph::Node* root)
-{
-	set<Graph::Node*> visited;
-
-	stack<Graph::Node*> bin;
-
-	bin.push(root);
-
-	list<Path> trace;
-
-	Path newpath;
-	newpath.push_back(root);
-	trace.push_back(newpath);
-
-	while (bin.empty() == false)
+	for (auto item : nodes)
 	{
-		auto node = bin.top();
-		bin.pop();
-
-		auto path = trace.back();
-
-		visited.insert(node);
-
-		for (auto adj : node->adj)
-		{
-			if (contain(path, adj))
-				continue;
-
-			bin.push(adj);
-
-			auto newpath = path;
-
-			newpath.push_back(adj);
-
-			trace.push_back(newpath);
-		}
+		printf("DFS (%d) -> (%d)\n", n1.value, item->value);
+		Graph::Print( g.getPathDFS(&n1, item) );
 	}
 
-	print(trace);
-}
-
-void traverseBFS(Graph::Node* root)
-{
-	set<Graph::Node*> visited;
-
-	queue<Graph::Node*> bin;
-
-	bin.push(root);
-
-	while (bin.empty() == false)
+	for (auto item : nodes)
 	{
-		auto node = bin.front();
-		bin.pop();
-
-		visited.insert(node);
-
-		for (auto adj : node->adj)
-		{
-			if (visited.find(adj) != visited.end())
-				continue;
-
-			bin.push(adj);
-
-			printf("%d", adj->value);
-		}
+		printf("BFS (%d) -> (%d)\n", n1.value, item->value);
+		Graph::Print( g.getPathBFS(&n1, item) );
 	}
+
 }
 
 
-void print(list<Path>& list)
-{
-	for (auto item : list)
-	{
-		for (auto node : item)
-		{
-			printf("%d->", node->value);
-		}
-		puts("end");
-	}
-}
 
 
-bool contain(Path& path, Graph::Node* node)
-{
-	return 
-		std::find(path.begin(), path.end(), node)
-		!= path.end();
-}

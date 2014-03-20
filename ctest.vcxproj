@@ -19,6 +19,7 @@
     <ClCompile Include="exercise8.c" />
     <ClCompile Include="exercise9.c" />
     <ClCompile Include="exercise7_2.cpp" />
+    <ClCompile Include="graph.cpp" />
     <ClCompile Include="misc.c" />
     <ClCompile Include="smart.cpp" />
   </ItemGroup>
@@ -27,6 +28,7 @@
     <ClInclude Include="binsearchtree.h" />
     <ClInclude Include="bintree.h" />
     <ClInclude Include="compile.h" />
+    <ClInclude Include="graph.h" />
     <ClInclude Include="heap.h" />
     <ClInclude Include="rbtree.h" />
   </ItemGroup>
