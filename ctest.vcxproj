@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClCompile Include="ec_graph.cpp" />
     <ClCompile Include="ec_heap.cpp" />
+    <ClCompile Include="ec_sort_basic.cpp" />
     <ClCompile Include="exercise6_1.c" />
     <ClCompile Include="exercise7.c" />
     <ClCompile Include="exercise7_3.cpp" />

@@ -1,76 +1,87 @@
+
+
 #include <iostream>
+#include <queue>
+#include <list>
+#include <vector>
 
-#include "graph.h"
 
-
-int main()
+class Graph
 {
-	using namespace enseed;
+public:
+	struct Edge;
 
-	Graph g;
-	Graph::Node  &n1 = g.add(1)
-				,&n2 = g.add(2)
-				,&n3 = g.add(3)
-				,&n4 = g.add(4)
-				,&n5 = g.add(5)
-				,&n6 = g.add(6)
-				,&n7 = g.add(7)
-				,&n8 = g.add(8)
-				;
-
-	n1.linkWith(&n2);
-	n1.linkWith(&n3);
-	n1.linkWith(&n4);
-
-	n2.linkWith(&n1);
-	n2.linkWith(&n3);
-
-	n3.linkWith(&n1);
-	n3.linkWith(&n2);
-	n3.linkWith(&n4);
-	n3.linkWith(&n5);
-
-	n4.linkWith(&n1);
-	n4.linkWith(&n3);
-	n4.linkWith(&n6);
-	n4.linkWith(&n7);
-
-	n5.linkWith(&n3);
-
-	n6.linkWith(&n4);
-	n6.linkWith(&n7);
-	n6.linkWith(&n8);
-
-	n7.linkWith(&n4);
-	n7.linkWith(&n6);
-
-	n8.linkWith(&n6);
-
-	std::vector<Graph::Node*> nodes;
-
-	nodes.push_back(&n1);
-	nodes.push_back(&n2);
-	nodes.push_back(&n3);
-	nodes.push_back(&n4);
-	nodes.push_back(&n5);
-	nodes.push_back(&n6);
-	nodes.push_back(&n7);
-	nodes.push_back(&n8);
-
-	for (auto item : nodes)
+	struct Node
 	{
-		printf("DFS (%d) -> (%d)\n", n1.value, item->value);
-		Graph::Print( g.getPathDFS(&n1, item) );
-	}
+	public:
+		Node(int v)
+			: value(v)
+			, parent(nullptr)
+		{}
 
-	for (auto item : nodes)
+	public:
+		/// make non directional link
+		void linkWith(Node* other);
+
+		/// make directional link to target node
+		void linkTo(Node* other);
+
+	public:
+		int value;
+		Node* parent;
+		std::list<Edge*> edges;
+	};
+
+
+	struct Edge
 	{
-		printf("BFS (%d) -> (%d)\n", n1.value, item->value);
-		Graph::Print( g.getPathBFS(&n1, item) );
-	}
+		Node* a;
+		Node* b;
+		int tag;
+	};
 
+	typedef Node* node_ptr;
+	typedef std::vector<node_ptr> Path;
+	typedef std::list<Edge> EdgeList;
+
+public:
+	Node& add(int value);
+
+	Path getPathDFS(node_ptr root, node_ptr);
+	Path getPathBFS(node_ptr root, node_ptr);
+	
+	static void Print(Path& list);
+
+	void linkWith(node_ptr a, node_ptr b);
+	void linkTo(node_ptr a, node_ptr b);
+	void resetTags();
+
+private:
+	std::list<Node> nodes;
+	EdgeList edges;
+};
+
+
+
+void Graph::linkWith(Graph::node_ptr a, Graph::node_ptr b)
+{
+	linkTo(a, b);
+	linkTo(b, a);
 }
 
+void Graph::linkTo(Graph::node_ptr a, Graph::node_ptr b)
+{
+	Edge edge = {a, b, 0};
 
+	edges.push_back(edge);
 
+	a->edges.push_back(&edges.back());
+}
 
+void Graph::resetTags()
+{
+	for (auto& edge : edges)
+	{
+		edge.tag = 0;
+	}
+}

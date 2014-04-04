@@ -51,6 +51,9 @@
     <ClCompile Include="graph.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="ec_sort_basic.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="compile.h">
